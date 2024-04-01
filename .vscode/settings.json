@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "ishadb",
+            "database": "${workspaceFolder:capmapp}/db.sqlite"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
