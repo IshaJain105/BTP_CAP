@@ -1,0 +1,69 @@
+### Get the service document
+http://localhost:4004/odata/v4/CatalogService
+
+### gte the service metadata
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+
+### get all employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+###Pagination -load data chunk by chunk
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=2
+
+###filtering data like where condition
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=salaryAmount ge 100000
+
+###counting records
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+### get record by key
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C197C7FB
+
+
+### post- to create new employee
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+  "nameFirst": "Isha",
+  "nameMiddle": "",
+  "nameLast": "Jain",
+  "nameInitials": null,
+  "sex": "F",
+  "language": "E",
+  "phoneNumber": null,
+  "email": "ishajain@gmail.com",
+  "loginName": "FALLF",
+  "Currency_code": "USD",
+  "salaryAmount": 1332362,
+  "accountNumber": "8877665544",
+  "bankId": "1210358",
+  "bankName": "My Bank of San Francisco"
+}
+###get single employee
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeSet/beaa63bc-4474-4755-b654-57d8358dca20
+
+###patch to update emplyooe data
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/beaa63bc-4474-4755-b654-57d8358dca20
+Content-Type: application/json
+
+{
+    "salaryAmount" : 9599
+}
+
+###delete
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/beaa63bc-4474-4755-b654-57d8358dca20
+
+### get purchase order and all its items data together - association
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052?$expand=Items,PARTNER_GUID
+
+
+###calling an action
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052/boost
+Content-Type: application/json
+
+{}
+
+###calling a function
+GET http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052/largestOrder()
